@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,6 +7,30 @@ import { Auth } from './auth.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
+
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if the user was logged in before
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    if (loggedIn === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    // Store the login state in local storage
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    // Remove the login state from local storage
+    localStorage.removeItem('isLoggedIn');
+  };
+
 
   return (
     <>
@@ -30,6 +54,20 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+
+
+{/* Render authentication component based on login state */}
+{isLoggedIn ? (
+  <div>
+    {/* Main page content goes here */}
+    <button onClick={handleLogout}>Logout</button>
+  </div>
+) : (
+  <Auth onLogin={handleLogin} />
+)}
+
+
 
       <div>
       {/* Other components */}
