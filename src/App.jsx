@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { Auth } from './auth.jsx';
+//import { Auth } from './auth.jsx';
 
 import React from "react";
-import { Routes , Route, Link } from 'react-router-dom';
+import { Routes, Router, Route, Link } from 'react-router-dom';
 import Home from "./home";
 import Login from "./login";
 
@@ -13,27 +12,40 @@ import Login from "./login";
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+ 
 
-  useEffect(() => {
-    // Check if the user was logged in before
-    const loggedIn = localStorage.getItem('isLoggedIn');
-    if (loggedIn === 'true') {
-      setIsLoggedIn(true);
-    }
-  }, []);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    // Store the login state in local storage
-    localStorage.setItem('isLoggedIn', 'true');
-  };
+<Router>
+  <>
+    <div className="container">
+      {/* Menu bar */}
+        <nav className="menu-bar">
+          <ul>
+            <li>
+              <Link to="/" className="menu-item">Home</Link>
+            </li>
+            <li>
+              <Link to="/login" className="menu-item">Login</Link>
+            </li>
+          </ul>
+        </nav>
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    // Remove the login state from local storage
-    localStorage.removeItem('isLoggedIn');
-  };
+  {/* Defining routes path and rendering components as element */}
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+    </div>
+
+    
+    {/* Footer */}
+      <div className="footer">
+        <h1>WalletCred</h1>
+        <h2>Made by punkQ.com</h2>
+      </div>
+  </>
+</Router>
+
 
   
 

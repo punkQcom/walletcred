@@ -13,6 +13,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.menu-bar {
+  display: flex; /* Display items horizontally */
+  justify-content: center; /* Center items horizontally */
+}
+
+.menu-bar ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.menu-bar ul li {
+  margin-right: 20px; /* Add margin between menu items */
+}
+
+.menu-bar .menu-item {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Set color for menu items */
+}
+
+
+
 a {
   font-weight: 500;
   color: #646cff;
