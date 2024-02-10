@@ -17,7 +17,7 @@ export const Auth = () => {
       setError(null); // Clear error state
       setSuccessMessage('Account created successfully!');
 
-      // Clear success message after 4 seconds
+      // Clear success message after 2 seconds
       setTimeout(() => {
         setSuccessMessage('');
       }, 2000);
@@ -30,13 +30,29 @@ export const Auth = () => {
         // If email is already in use, set error message and clear success message
         setError('Email address is already in use.');
         setSuccessMessage('');
+
+        // Clear error message after 2 seconds (2000 milliseconds)
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       } else if (error.code === 'auth/weak-password') {
         setError('Password is too weak. Please choose a stronger password.');
+
+        // Clear error message after 2 seconds (2000 milliseconds)
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       } else {
         setError('An error occurred. Please try again later.');
+
+        // Clear error message after 2 seconds (2000 milliseconds)
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       }
     }
   };
+
 
   const login = async () => {
     try {
@@ -47,7 +63,7 @@ export const Auth = () => {
       setError(null);
       setSuccessMessage('Logged in successfully!');
 
-      // Clear success message after 4 seconds
+      // Clear success message after 2 seconds (2000 milliseconds)
       setTimeout(() => {
         setSuccessMessage('');
       }, 2000);
@@ -58,8 +74,18 @@ export const Auth = () => {
       // Handle specific error cases
       if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
         setError('Invalid email or password.');
+
+        // Clear error message after 2 seconds (2000 milliseconds)
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       } else {
         setError('An error occurred. Please try again later.');
+
+        // Clear error message after 2 seconds (2000 milliseconds)
+        setTimeout(() => {
+          setError('');
+        }, 2000);
       }
     }
   };
@@ -73,7 +99,7 @@ export const Auth = () => {
       setSuccessMessage('Signed in with Google successfully!');
       setTimeout(() => {
         setSuccessMessage('');
-      }, 3000);
+      }, 2000);
     } catch (error) {
       setError('An error occurred. Please try again later.');
     }
@@ -88,7 +114,7 @@ export const Auth = () => {
       setSuccessMessage('Logged out successfully!');
       setTimeout(() => {
         setSuccessMessage('');
-      }, 5000);
+      }, 2000);
     } catch (error) {
       setError('An error occurred. Please try again later.');
     }
@@ -117,8 +143,22 @@ export const Auth = () => {
       <button onClick={logOut}>Log Out</button>
       <br /><br />
       <button onClick={signInWithGoogle}>Sign in with Google</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+     
+     
+      <div style={{ marginBottom: "20px" }}>
+        {/* Your JSX code */}
+      </div>
+      <div style={{ height: "30px", marginBottom: "20px" }}>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      </div>
+
+    
     </div>
+
+
+
+
+
   );
 };
