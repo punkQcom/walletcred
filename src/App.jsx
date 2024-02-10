@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Auth } from './auth.jsx';
 
+import React from "react";
+import { Routes , Route, Link } from 'react-router-dom';
+import Home from "./home";
+import Login from "./login";
 
 
 
@@ -36,6 +39,29 @@ function App() {
 
   return (
     <>
+
+    <div className="container">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/walletcred" className="list">Home</Link>
+            </li>
+            <li>
+              <Link to="/walletcred/login" className="list">Login</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Defining routes path and rendering components as element */}
+        <Routes>
+          <Route path="/walletcred" element={<Home />} />
+          <Route path="/walletcred/login" element={<Login />} />
+        </Routes>
+      </div>
+
+
+
+
       <div>
         <h1>WalletCred</h1>
         <h2>Made by punkQ.com</h2>
@@ -50,20 +76,7 @@ function App() {
       <h2>Vite + React</h2>
 
 
-{/*  <div>  */}
-{/*  <Auth />  */}
-{/*  </div>  */}
 
-     
-{/* Conditional rendering based on login state */}
-{isLoggedIn ? (
-        <>
-          <button onClick={handleLogout}>Logout</button>
-          {/* Add your authenticated content here */}
-        </>
-      ) : (
-        <Auth onLogin={handleLogin} />
-      )}
 
 
 
