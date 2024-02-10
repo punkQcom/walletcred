@@ -3,8 +3,21 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+//kokeillaan valikkoa
+import { BrowserRouter } from 'react-router-dom';
+
+
+ // ReactDOM.createRoot(document.getElementById('root')).render(
+ // <React.StrictMode>
+ // <App />
+ // </React.StrictMode>,
+ // )
+
+//koitetaan valikkoa
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
-)
+  </BrowserRouter>
+);
+

@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Auth } from './auth.jsx';
+
+
+
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,11 +49,24 @@ function App() {
       <h3>with</h3>
       <h2>Vite + React</h2>
 
-<div>
-<Auth />
-</div>
+
+{/*  <div>  */}
+{/*  <Auth />  */}
+{/*  </div>  */}
 
      
+{/* Conditional rendering based on login state */}
+{isLoggedIn ? (
+        <>
+          <button onClick={handleLogout}>Logout</button>
+          {/* Add your authenticated content here */}
+        </>
+      ) : (
+        <Auth onLogin={handleLogin} />
+      )}
+
+
+
     </>
   );
 }
