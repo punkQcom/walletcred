@@ -1,6 +1,6 @@
-import { auth , googleProvider} from "./secrets/FirebaseInit";
-import { createUserWithEmailAndPassword,signInWithPopup, signOut } from "firebase/auth";
 import { useState } from "react";
+import { auth, googleProvider } from "./secrets/FirebaseInit";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 export const Auth = () => {
   const [email, setEmail] = useState("");
@@ -8,51 +8,77 @@ export const Auth = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
 
-    
- //   console.log(auth?.currentUser?.email);
-  
-  const signIn = async () => {
+  const register = async () => {
     try {
-    
-    // Attempt to create a user account
-    await createUserWithEmailAndPassword(auth, email, password);
+      // Create a new user account
+      await createUserWithEmailAndPassword(auth, email, password);
 
-    // If successful, clear error and set success message
-    setError(null);
-    setSuccessMessage('Account created successfully!');
+      // If successful, clear error and set success message
+      setError(null); // Clear error state
+      setSuccessMessage('Account created successfully!');
 
-    // Clear success message after 5 seconds
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, 5000);
-    
+      // Clear success message after 4 seconds
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 2000);
     } catch (error) {
-  
+      // Log the specific error message returned by Firebase Authentication
+      console.error("Firebase Authentication Error:", error.message);
 
-    // Handle specific error cases
-  if (error.code === 'auth/email-already-in-use') {
-    setError('Email address is already in use.');
-  } else if (error.code === 'auth/weak-password') {
-    setError('Password is too weak. Please choose a stronger password.');
-  } else {
-    setError('An error occurred. Please try again later.');
-  }
-}
-};
-  
-const signInWithGoogle = async () => {
+      // Handle specific error cases
+      if (error.code === 'auth/email-already-in-use') {
+        // If email is already in use, set error message and clear success message
+        setError('Email address is already in use.');
+        setSuccessMessage('');
+      } else if (error.code === 'auth/weak-password') {
+        setError('Password is too weak. Please choose a stronger password.');
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
+    }
+  };
+
+  const login = async () => {
+    try {
+      // Sign in with existing credentials
+      await signInWithEmailAndPassword(auth, email, password);
+
+      // If successful, clear error and set success message
+      setError(null);
+      setSuccessMessage('Logged in successfully!');
+
+      // Clear success message after 4 seconds
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 2000);
+    } catch (error) {
+      // Log the specific error message returned by Firebase Authentication
+      console.error("Firebase Authentication Error:", error.message);
+
+      // Handle specific error cases
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+        setError('Invalid email or password.');
+      } else {
+        setError('An error occurred. Please try again later.');
+      }
+    }
+  };
+
+  const signInWithGoogle = async () => {
     try {
       // Sign in with Google
       await signInWithPopup(auth, googleProvider);
       // If successful, clear error and set success message
       setError(null);
       setSuccessMessage('Signed in with Google successfully!');
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 3000);
     } catch (error) {
       setError('An error occurred. Please try again later.');
     }
   };
 
-  
   const logOut = async () => {
     try {
       // Sign out
@@ -60,34 +86,39 @@ const signInWithGoogle = async () => {
       // If successful, clear error and success message
       setError(null);
       setSuccessMessage('Logged out successfully!');
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
     } catch (error) {
       setError('An error occurred. Please try again later.');
     }
   };
 
-  
   return (
     <div>
-      <input style={{ marginBottom: "8px" }}
-      placeholder="Email.."
-      onChange={(e) => setEmail(e.target.value)}
+      <input
+        style={{ marginBottom: "8px" }}
+        placeholder="Email.."
+        onChange={(e) => setEmail(e.target.value)}
       />
 
-      <input style={{ marginBottom: "8px" }}
-      type="password"
-      placeholder="Password.."
-      onChange={(e) => setPassword(e.target.value)}
+      <input
+        style={{ marginBottom: "8px" }}
+        type="password"
+        placeholder="Password.."
+        onChange={(e) => setPassword(e.target.value)}
       />
 
-    <br />
+      <br />
 
-      <button onClick={signIn}> SignIn / Register</button> <br /><br />
-      <button onClick={logOut}> LogOut</button>
+      <button onClick={register}>Register</button>
+      <button onClick={login}>Log In</button>
       <br /><br />
-      <button onClick={signInWithGoogle}> Signin with Google</button>
+      <button onClick={logOut}>Log Out</button>
+      <br /><br />
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-
     </div>
   );
 };

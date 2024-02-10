@@ -50,4 +50,4 @@ const PopupLogin = ({ onClose }) => {
   );
 };
 
-export { PopupLogin as default };
+export default PopupLogin;
