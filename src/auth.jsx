@@ -81,7 +81,7 @@ const signInWithGoogle = async () => {
 
     <br />
 
-      <button onClick={signIn}> SignIn / Register</button> <br />
+      <button onClick={signIn}> SignIn / Register</button> <br /><br />
       <button onClick={logOut}> LogOut</button>
       <br /><br />
       <button onClick={signInWithGoogle}> Signin with Google</button>
