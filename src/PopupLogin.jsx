@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Auth } from './auth.jsx';
+
 
 const PopupLogin = ({ onClose }) => {
   const [email, setEmail] = useState('');
@@ -33,9 +35,13 @@ const PopupLogin = ({ onClose }) => {
       <h2>Login</h2>
       <div>
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
         <button onClick={handleEmailLogin}>Login with Email</button>
       </div>
+
+      <br />
+      <br />
+
       <div>
         <button onClick={handleGoogleLogin}>Login with Google</button>
       </div>
@@ -44,4 +50,4 @@ const PopupLogin = ({ onClose }) => {
   );
 };
 
-export default PopupLogin;
+export { PopupLogin as default };
