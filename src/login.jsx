@@ -1,3 +1,4 @@
+//login.jsx
 import React from 'react'
 import { useLocation } from 'react-router-dom'; // Import useLocation hook
 import { useState, useEffect } from 'react';
@@ -8,6 +9,11 @@ function Login() {
   
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
+
+    // Determine if the current location is the login page
+    const isLoginPage = location.pathname === '/login';
+
+
 
     useEffect(() => {
       // Check if the user was logged in before
@@ -29,9 +35,7 @@ function Login() {
       localStorage.removeItem('isLoggedIn');
     };
   
-    // Determine if the current location is the login page
-  const isLoginPage = location.pathname === '/login';
-
+    
 
   return (
     <>

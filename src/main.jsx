@@ -1,5 +1,6 @@
+//Main.jsx
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client' //'react-dom/client' for Webbrowsers
 import App from './App.jsx'
 import './index.css'
 
