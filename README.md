@@ -15,9 +15,9 @@ This project has following actions:
 
 Problems:
 - firebase apikeys etc. does not work as varibles:
-  - so deploy.ym is not working, if you build project it can't read firebase apikeys from github secrets
-  - locally api keys etc are stored as variables in .env
-  - locally api keys are stored ./secrets/Firebaseinit.jsx
+  - so deploy.yml is not working, if you build project it can't read firebase apikeys from github secrets or .env variables.
+  - locally api keys etc are stored as variables in .env: REACT_APP_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF and VITE_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF formats.
+  - locally api keys are stored ./secrets/Firebaseinit.jsx, apiKey: "AIzNFNNNNNDFSFDDSDSNNFNFNSF" format.
 
 - upper menu structure:
   - Home link should be in upper left corner login link upper right corner. Maybe error in css.
@@ -29,7 +29,6 @@ Problems:
 Thanks to:
 - https://github.com/sitek94/vite-deploy-demo
 - https://gist.github.com/lajlev/4b1d0207f87d0a8e9cf20fc78a6fd60a
-
 
  This project is made purely to test and try coding with ChatGPT.
  Do not use this product in production environments!
