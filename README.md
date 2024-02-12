@@ -8,22 +8,22 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 This project has following actions:
-- it can create user to firebase.
-- it can check if user exists on firebase.
-- it can check if password is correct or not in firebase.
-- it can in some level log in the user
+- it can create user to Firebase.
+- it can check if user exists on Firebase.
+- it can check if password is correct or not in Firebase.
+- it can in some level log in the user.
 
 Problems:
-- firebase apikeys etc. does not work as varibles:
-  - so deploy.yml is not working, if you build project it can't read firebase apikeys from github secrets or .env variables.
-  - locally api keys etc are stored as variables in .env: REACT_APP_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF and VITE_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF formats.
-  - locally api keys are stored ./secrets/Firebaseinit.jsx, apiKey: "AIzNFNNNNNDFSFDDSDSNNFNFNSF" format.
+- Firebase apikeys etc. does not work as varibles:
+  - So deploy.yml is not working, if you build project it can't read firebase apikeys from github secrets or .env variables.
+  - Locally api keys etc are stored as variables in .env: REACT_APP_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF and VITE_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF formats.
+  - Locally api keys are stored ./secrets/Firebaseinit.jsx, apiKey: "AIzNFNNNNNDFSFDDSDSNNFNFNSF" format.
 
-- upper menu structure:
+- Upper menu structure:
   - Home link should be in upper left corner login link upper right corner. Maybe error in css.
 
-- checking if user is logged in or out does not work as it should.
-   - saving user's state not working as expected.
+- Checking if user is logged in or out does not work as it should.
+   - Saving user's state not working as expected.
 
 
 Thanks to:
