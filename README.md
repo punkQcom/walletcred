@@ -27,8 +27,8 @@ Problems:
 
 
 Thanks to:
-https://github.com/sitek94/vite-deploy-demo
-https://gist.github.com/lajlev/4b1d0207f87d0a8e9cf20fc78a6fd60a
+- https://github.com/sitek94/vite-deploy-demo
+- https://gist.github.com/lajlev/4b1d0207f87d0a8e9cf20fc78a6fd60a
 
 
  This project is made purely to test and try coding with ChatGPT.
