@@ -20,7 +20,9 @@ This project has following actions:
 Problems:
 - Firebase apikeys etc. does not work as varibles:
   - So deploy.yml is not working, if you build project it can't read firebase apikeys from github secrets or .env variables.
-  - Locally api keys etc are stored as variables in .env: REACT_APP_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF and VITE_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF formats.
+  - Locally api keys etc are stored as variables in:
+    - .env: REACT_APP_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF format.
+    - VITE_FIREBASE_API_KEY=AIzNFNNNNNDFSFDDSDSNNFNFNSF format.
   - Locally api keys are stored ./secrets/Firebaseinit.jsx, apiKey: "AIzNFNNNNNDFSFDDSDSNNFNFNSF" format.
 
 - Upper menu structure:
