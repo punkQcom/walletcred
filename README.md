@@ -8,10 +8,10 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 This project has following actions:
-- it can create user to Firebase.
-- it can check if user exists on Firebase.
-- it can check if password is correct or not in Firebase.
-- it can in some level log in the user.
+- It can create user to Firebase.
+- It can check if user exists on Firebase.
+- It can check if password is correct or not in Firebase.
+- It can in some level log in the user.
 
 Problems:
 - Firebase apikeys etc. does not work as varibles:
