@@ -1,12 +1,19 @@
+/// KAIKKI OK NYT JOS PITÄÄ POISTAA
 //App.jsx
 import React from "react";
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-//import { Auth } from './auth.jsx';
-
-import { Routes, Router, Route, Link, useLocation } from 'react-router-dom';
+import { AuthProvider } from './secrets/Authprovider.jsx';
+import { BrowserRouter, Routes, Router, Route, Link, useLocation } from 'react-router-dom';
 import Login from "./login";
+
+function Home() {
+  return
+  //
+  //<div>This is the home page</div>; 
+  // Route ei jotenkin toimi, pitää olla tämä HOME.
+}
 
 function App() {
   // Get the current location using useLocation hook
@@ -19,27 +26,37 @@ function App() {
   const isRootPage = location.pathname === "/";
 
   return (
-    <div className="container">
-      {/* Menu bar */}
-      <nav className="menu-bar">
-        <ul>
-          <li>
-            <Link to="/" className="menu-item">Home</Link>
-          </li>
-          <li>
-            <Link to="/login" className="menu-item">Login</Link>
-          </li>
-        </ul>
-      </nav>
+    
+  <div>
+  {/* Menu bar */}
+  <nav className="menu-bar">
+    <ul>
+      <li className="menu-item home"> {/* Add class "home" to the Home link */}
+        <Link to="/" className="menu-item">Home</Link>
+      </li>
+      <li className="menu-item login"> {/* Add class "login" to the Login link */}
+        <Link to="/login" className="menu-item">Login</Link>
+      </li>
+    </ul>
+  </nav>
 
-      {/* Defining routes path and rendering components as element */}
-      <Routes>
-  <Route path="/walletcred/*" element={<App />} /> {/* Render App component for / and its children */}
-  <Route path="/walletcred/login" element={<Login />} /> {/* Render Login component for /login */}
-</Routes>
+    
+  {/* Main container */}
+    <div className="container">
+ 
+   {/* Defining routes path and rendering components as element */}
+
+      <AuthProvider> {/* Wrap your application with AuthProvider */}
+          {/* Render components based on the current location */}
+          {location.pathname === "/" && <Home />}
+          {location.pathname === "/login" && <Login />}
+      </AuthProvider>
+
 
      {/* Conditional rendering of footer and additional images */}
-     console.log(isRootPage)
+     {/* console.log(isRootPage) */}
+
+
       {isRootPage && (
         <div>
           <div className="header">
@@ -56,11 +73,13 @@ function App() {
             <h2>Vite + React</h2>
           </div>
           <div className="footer">
-            <h2>made by punkQ.com</h2>
+            <h3>made by punkQ.com</h3>
           </div>
          </div>
       )}
     </div>
+  </div>
+
   );
 }
 
